@@ -6,9 +6,7 @@ phases:
   build:
     commands:
        - mvn clean package
-  post_build:
-    commands:
 artifacts:
   files:
     - target/bookit-aws-lambda-1.0-SNAPSHOT.jar
-    discard-paths: yes
+  discard-paths: yes
