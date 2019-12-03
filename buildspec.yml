@@ -9,9 +9,6 @@ phases:
   post_build:
     commands:
 artifacts:
-  secondary-artifacts:
-    artifact1: 
-      files:
-         - 'target/bookit-aws-lambda-1.0-SNAPSHOT.jar'
-      discard-paths: yes
-    
+  files:
+    - 'target/bookit-aws-lambda-1.0-SNAPSHOT.jar'
+    discard-paths: yes
