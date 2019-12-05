@@ -13,14 +13,5 @@ Resources:
       MemorySize: 320
       Timeout: 15
       Role: arn:aws:iam::194896174337:role/service-role/EcsTaskScheduleLambdaFunction-role-4765ou0z
-      Events:
-        Schedule1:
-          Type: Schedule
-          Properties:
-            Schedule: cron(0 7 ? * MON-FRI *)
-        Schedule2:
-          Type: Schedule
-          Properties:
-            Schedule: cron(0 18 ? * MON-FRI *)
       DeploymentPreference:
         Type: AllAtOnce
