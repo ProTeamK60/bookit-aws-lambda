@@ -22,7 +22,7 @@ Resources:
         Schedule2:
           Type: Schedule
           Properties:
-            Schedule: cron(39 13 ? * MON-FRI *)
+            Schedule: cron(0 18 ? * MON-FRI *)
       DeploymentPreference:
         Type: AllAtOnce
         
