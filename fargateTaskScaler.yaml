@@ -1,19 +1,18 @@
 AWSTemplateFormatVersion: '2010-09-09'
-Transform: 'AWS::Serverless-2016-10-31'
+Transform: AWS::Serverless-2016-10-31
 Description: An AWS Serverless Specification template describing your function.
 Resources:
   fargateTaskScaler:
-    Type: 'AWS::Serverless::Function'
+    Type: AWS::Serverless::Function
     Properties:
-      Handler: 'se.knowit.bookit.aws.taskscaling.FargateTaskScaler::handleRequest'
+      Handler: se.knowit.bookit.aws.taskscaling.FargateTaskScaler::handleRequest
       Runtime: java11
       CodeUri: s3://bookit-aws-lambda-bucket/build-bookit-aws-lambda.zip/bookit-aws-lambda-1.0-SNAPSHOT.jar
       AutoPublishAlias: live
       Description: ''
       MemorySize: 320
       Timeout: 15
-      Role: >-
-        arn:aws:iam::194896174337:role/service-role/EcsTaskScheduleLambdaFunction-role-4765ou0z
+      Role: arn:aws:iam::194896174337:role/service-role/EcsTaskScheduleLambdaFunction-role-4765ou0z
       Events:
         Schedule1:
           Type: Schedule
@@ -25,4 +24,3 @@ Resources:
             Schedule: cron(0 18 ? * MON-FRI *)
       DeploymentPreference:
         Type: AllAtOnce
-        
