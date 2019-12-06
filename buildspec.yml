@@ -9,5 +9,5 @@ phases:
       - pip install pipenv --user
       - pipenv install awscli aws-sam-cli
       - mvn clean package
-      - pipenv run sam package --template-file fargateTaskScaler.yaml --output-template-file packaged-fargateTaskScaler.yaml --s3-bucket bookit-aws-lambda-bucket --s3-prefix build/bookit-aws-lambda.jar
+      - pipenv run sam package --template-file fargateTaskScaler.yaml --output-template-file packaged-fargateTaskScaler.yaml --s3-bucket bookit-aws-lambda-bucket --s3-prefix build
       - pipenv run sam deploy --template-file packaged-fargateTaskScaler.yaml --capabilities CAPABILITY_NAMED_IAM --region eu-north-1 --stack-name serverlessrepo-fargateTaskScaler
