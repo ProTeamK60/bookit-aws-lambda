@@ -10,4 +10,4 @@ phases:
       - pipenv install awscli aws-sam-cli
       - mvn clean package
       #- pipenv run aws s3 cp target/bookit-aws-lambda-1.0-SNAPSHOT.jar s3://bookit-aws-lambda-bucket/build/bookit-aws-lambda-1.0-SNAPSHOT.jar
-      - pipenv run sam deploy --template-file fargateTaskScaler.yaml --s3-bucket s3://bookit-aws-lambda-bucket --capabilities CAPABILITY_NAMED_IAM --region eu-north-1 --stack-name serverlessrepo-fargateTaskScaler
+      - pipenv run sam deploy --template-file fargateTaskScaler.yaml --s3-bucket bookit-aws-lambda-bucket --capabilities CAPABILITY_NAMED_IAM --region eu-north-1 --stack-name serverlessrepo-fargateTaskScaler
