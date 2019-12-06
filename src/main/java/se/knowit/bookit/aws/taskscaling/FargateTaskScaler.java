@@ -9,6 +9,7 @@ import java.util.Arrays;
 public class FargateTaskScaler {
 
     public void handleRequest(Input input, Context context) {
+        System.out.println(input);
         final AmazonECS ecsClient = AmazonECSClientBuilder.defaultClient();
         try {
             Arrays.stream(input.serviceNames).forEach((service) -> ecsClient.updateService(
