@@ -7,7 +7,7 @@ Resources:
     Properties:
       Handler: se.knowit.bookit.aws.taskscaling.FargateTaskScaler::handleRequest
       Runtime: java11
-      CodeUri: s3://bookit-aws-lambda-bucket/fargateTaskScaler/bookit-aws-lambda-1.0-SNAPSHOT.jar
+      CodeUri: target/bookit-aws-lambda-1.0-SNAPSHOT.jar
       AutoPublishAlias: live
       Description: ''
       MemorySize: 320
