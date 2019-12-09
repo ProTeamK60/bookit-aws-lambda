@@ -5,10 +5,15 @@ phases:
       java: openjdk11
   build:
     commands:
-       - mvn clean package
-  post_build:
-    commands:
-artifacts:
-  files:
-    - target/bookit-aws-lambda-1.0-SNAPSHOT.jar
-    discard-paths: yes
+      # install aws cli and sam cli
+      - pip install --upgrade pip
+      - pip install pipenv --user
+      - pipenv install awscli aws-sam-cli
+      # build jar.
+      - mvn clean package
+      # delete old build artifact.
+      - pipenv run aws s3 rm s3://bookit-aws-lambda-bucket/build/ --recursive
+      # package new build artifact and copy to s3.
+      - pipenv run sam package --template-file fargateTaskScaler.yaml --output-template-file packaged-fargateTaskScaler.yaml --s3-bucket bookit-aws-lambda-bucket --s3-prefix build
+      # deploy stack.
+      - pipenv run sam deploy --template-file packaged-fargateTaskScaler.yaml --capabilities CAPABILITY_NAMED_IAM --region eu-north-1 --stack-name serverlessrepo-fargateTaskScaler
